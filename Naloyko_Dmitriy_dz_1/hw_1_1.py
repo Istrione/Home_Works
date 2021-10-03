@@ -1,14 +1,14 @@
 # # 1. Реализовать вывод информации о промежутке времени в зависимости от его продолжительности duration в секундах: до минуты: <s> сек; до часа: <m> мин <s> сек; до суток: <h> час <m> мин <s> сек; * в остальных случаях: <d> дн <h> час <m> мин <s> сек.
 #
 # # Задание №1
-# duration = 5294861
-# day = duration // 86400
-# duration = duration - day * 86400
-# hour = duration // 3600
-# duration = duration - hour * 3600
-# minute = duration // 60
-# duration = duration - minute * 60
-# print(day, ' дн ', hour, ' час ', minute, ' мин ', duration, ' сек')
+duration = 5294861 #duration = input('Введите количество секунд?')
+day = duration // 86400
+duration = duration - day * 86400
+hour = duration // 3600
+duration = duration - hour * 3600
+minute = duration // 60
+duration = duration - minute * 60
+print(day, ' дн ', hour, ' час ', minute, ' мин ', duration, ' сек')
 
 # Задание №2
 # вариант а
