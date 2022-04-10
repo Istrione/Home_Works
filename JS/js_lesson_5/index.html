@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chess Desk</title>
+    <link rel = 'stylesheet' href ="..\js_lesson_5\hw_1.css">
+</head>
+<body>
+    <div></div>
+	<script>
+		var table = document.createElement('table');
+		var array = ['', 'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', ''];
+		var number = ['', '1', '2', '3', '4', '5', '6', '7', '8', ''];
+		var reverseNumber = number.reverse();
+
+		function chessDesk() {
+			for (var i = 0; i < 10; ++i) {
+				var tr = document.createElement('tr');
+				table.append(tr);
+				for (var j = 0; j < 10; ++j) {
+					var td = document.createElement('td');					
+					tr.append(td);
+					td.innerHTML = (i + 1) + j;
+
+					if (td.innerHTML % 2 == 0) {
+						td.style.backgroundColor = "#000000";
+					} 
+					
+					if (i == 9 && 0 <= j <= 9) {
+						td.innerHTML = array[j];
+					} else if (i == 0 && 0 <= j <= 9){
+						td.innerHTML = array[j];
+					} else if (i <= 8 && j == 0) {
+						td.innerHTML = reverseNumber[i];
+					} else if (i <= 8 && j == 9) {
+						td.innerHTML = reverseNumber[i];
+					} else {
+						td.innerHTML = '';
+					}
+				}
+			}
+			document.querySelector('div').append(table);
+		}
+		chessDesk();
+	</script>
+</body>
+</html>
