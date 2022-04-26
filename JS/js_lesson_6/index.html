@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+	<div class="container">
+		<div id  class="basket">
+			<h1>Корзина</h1>
+			<table class="choose_toys"></table>
+			<span class='sum'></span>
+		</div>
+		<div class="goods__row">
+			<h1>Ассортимент фруктов</h1>
+			<div class="assortiment"></div>
+		</div>
+	</div>
+	<script>
+		var good0 = {
+			title: 'Апельсин',
+			imageSrc: '../js_lesson_6/img/orange.jpg',
+			price: 120,
+			count: 10,
+		};
+		var good1 = {
+			title: 'Яблоко',
+			imageSrc: '../js_lesson_6/img/apple.jpg',
+			price: 85,
+			count: 10,
+		};
+		var good2 = {
+			title: 'Киви',
+			imageSrc: '../js_lesson_6/img/kiwi.jpg',
+			price: 150,
+			count: 10,
+		};
+		var good3 = {
+				title: 'Банан',
+				imageSrc: '../js_lesson_6/img/banan.jpg',
+				price: 136,
+				count: 10,
+			};
+
+		var toys = [good0, good1, good2, good3];
+
+		var sumToys = 0;
+		var countToys = 0;
+
+		function buy() {
+			var assortiment = document.querySelector('.assortiment');
+			for (i = 0; i < toys.length; i++) {
+				var elem = document.createElement('div');
+				elem.classList.add('good__item');
+				elem.append(document.createTextNode(toys[i].title));
+				var elemImg = document.createElement('img');
+				elemImg.classList.add('img');
+				elemImg.src = toys[i].imageSrc;
+				elem.append(elemImg);
+
+				elem.append(document.createTextNode('Цена: ' + toys[i].price + '\u20bd'));
+
+				elemBtn = document.createElement('button');
+				elemBtn.innerText = 'Купить';
+				elemBtn.classList.add('buyBtn');
+				elemBtn.setAttribute('id', 'b' + i);
+				elemBtn.onclick = addToys;
+				elem.appendChild(elemBtn);
+
+				assortiment.appendChild(elem);
+			}
+		}
+		
+		function addToys(e) {
+				var button = e.target;
+				var arrayBtn = button.id;
+				var id = arrayBtn[1];
+				var chooseToy = toys[id];
+				var chooseToys = document.querySelector('.choose_toys');
+
+				var tr = chooseToys.insertRow();
+				var td = tr.insertCell();
+
+				sumToys += chooseToy.price;
+				td.appendChild(document.createTextNode(chooseToy.title + chooseToy.count + ' шт.' + ' / ' + ' Цена ' + chooseToy.price + ' \u20bd')); 
+				document.querySelector('.sum').textContent = 'Сумма: ' + sumToys + ' \u20bd';
+			}
+			buy();
+    </script>
+</body>
+</html>
